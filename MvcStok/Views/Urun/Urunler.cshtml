@@ -1,0 +1,58 @@
+﻿@using MvcStok.Models.Entity
+@model List<TBL_URUNLER>
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="dtTBL1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ürün ID</th>
+            <th>Ürün Adı</th>
+            <th>Markası</th>
+            <th>Kategori</th>
+            <th>Fiyat</th>
+            <th>Kalan Stok</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urn in Model)
+        {
+            <tr>
+                <th>@urn.URUNID</th>
+                <td>@urn.URUNAD</td>
+                <td>@urn.MARKA</td>
+                <td>@urn.TBL_KATEGORILER.KATEGORİAD</td>
+                <td>@urn.FİYAT</td>
+                <td>@urn.STOK</td>
+                <td><a href="/URUN/SIL/@urn.URUNID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/URUN/UrunGetir/@urn.URUNID" class="btn btn-success">GÜNCELLE</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/URUN/URUNEKLE" class="btn btn-primary" style="margin-block-end:50px">YENİ ÜRÜN EKLE</a>
+
+
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json" rel="stylesheet">
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script>
+    $('#dtTBL1').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json',
+        },
+    });
+
+
+</script>

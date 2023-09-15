@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Mvc Stok</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/Kategori/Kategoriler">Kategoriler</a></li>
+            <li><a href="/Urun/Urunler">Ürünler</a></li>
+            <li><a href="/Musteri/Musteriler">Müşteriler</a></li>
+            <li><a href="/Satis/Satislar">Satışlar</a></li>
+
+
+        </ul>
+        @*Hakkımda popup başlangıç*@
+        
+            <ul class="nav navbar-nav" data-toggle="modal" data-target="#Modal2">
+                <li><a>Hakkımda</a></li>
+            </ul>
+            <div class="modal" id="Modal2">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">Muhammed Ali ASLAN</h2>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <label>Bu Proje</label>
+                                <p>Muhammed Ali ASLAN tarafından yapılmştır...</p>
+                                @*Javascript saat başlangıç*@
+                                <script type="text/javascript">
+                                    window.onload = startTime;
+                                    function startTime() {
+                                        var today = new Date();
+                                        var h = today.getHours();
+                                        var m = today.getMinutes();
+                                        var s = today.getSeconds();
+
+                                        h = checkTime(h);
+                                        m = checkTime(m);
+                                        s = checkTime(s);
+                                        document.getElementById('saat').innerHTML = h + ":" + m + ":" + s;
+                                        t = setTimeout('startTime()', 1000);
+                                    }
+
+                                    function checkTime(i) {
+                                        if (i < 10) {
+                                            i = "0" + i;
+                                        }
+                                        return i;
+                                    }
+
+                                </script>
+                                <p id="saat"></p>
+                                @*Javascript saat bitiş*@
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        
+        @*Hakkımda popup bitiş*@
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+</body>
+</html>
